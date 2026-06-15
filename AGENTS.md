@@ -14,4 +14,31 @@
 다음 스킬이 설치되어 있으며 모든 개발 작업에 대해 활성화되어야 합니다:
 - **karpathy-guidelines**: `./.gemini/skills/karpathy-guidelines/SKILL.md` 에 위치함.
 
-이 프로젝트의 AI 코딩 절차는 .harness/INDEX.md를 따른다.
+## 프로젝트 개요
+
+<!-- 이 프로젝트가 무엇인지 간략히 기술 -->
+
+## 기술 스택
+
+- Language: Java
+- Framework: Spring Boot
+- Test: JUnit 5 + Mockito
+- Component Test DB: H2 (in-memory)
+- Build: <!-- Maven / Gradle -->
+
+## 주요 경로
+
+<!-- src/main/java/, src/test/java/, 설정 파일 위치 등 -->
+
+## 프로젝트 설계 및 컨벤션
+
+설계 원칙 및 아키텍처 개요    → `.project/overview.md`
+아키텍처 / 패키지 컨벤션      → `.project/conventions/architecture.md`
+DDD 용어 및 적용 방식         → `.project/conventions/ddd.md`
+REST API 설계 규칙            → `.project/conventions/rest-api.md`
+테스트 전략 및 실행 환경      → `.project/testing/strategy.md`
+Component Test 설정 및 패턴   → `.project/testing/component-test.md`
+
+## AI 작업 방식
+
+이 프로젝트의 AI 코딩 절차는 `.harness/INDEX.md`를 따른다.
