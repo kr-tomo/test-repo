@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
            @Index(name = "idx_field_parent_id", columnList = "parent_id")
        },
        uniqueConstraints = {
-           @UniqueConstraint(name = "uk_field_name_parent_id", columnNames = {"name", "parent_id"})
+           @UniqueConstraint(name = "uk_field_name", columnNames = {"name"})
        })
 @Getter
 @Setter
