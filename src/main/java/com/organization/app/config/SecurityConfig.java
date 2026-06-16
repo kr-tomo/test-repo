@@ -22,6 +22,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/fields").permitAll()
                 .requestMatchers("/fields/**").hasAuthority("ROLE_ACCOUNT_MANAGEMENT")
                 .requestMatchers("/fields").hasAuthority("ROLE_ACCOUNT_MANAGEMENT")
+                .requestMatchers("/mentor-profiles/me/**").hasAuthority("ROLE_MENTOR")
+                .requestMatchers("/admin/**").hasAuthority("ROLE_ACCOUNT_MANAGEMENT")
                 .requestMatchers("/h2-console/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .anyRequest().authenticated()
