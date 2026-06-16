@@ -45,4 +45,15 @@ class FieldRepositoryTest {
         assertTrue(descendants.stream().anyMatch(e -> e.getId().equals(child2.getId())));
         assertTrue(descendants.stream().anyMatch(e -> e.getId().equals(grandChild.getId())));
     }
+
+    @Test
+    @DisplayName("[BR-FIELD-001] 분야 이름의 전역 고유성 검증")
+    void existsByName() {
+        // given
+        fieldPersistenceAdapter.save(Field.create("개발", null));
+        
+        // when & then
+        assertTrue(fieldPersistenceAdapter.existsByName("개발"));
+        assertFalse(fieldPersistenceAdapter.existsByName("기획"));
+    }
 }

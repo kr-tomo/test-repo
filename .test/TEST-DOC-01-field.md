@@ -16,8 +16,8 @@
 |TC-F-004|분야 생성 — name 공백 문자열           |P2 |Unit, Component|Yes  |UC-FIELD-001, VR:FIELD_NAME_REQUIRED   |
 |TC-F-005|분야 생성 — name 100자 초과          |P2 |Unit, Component|Yes  |UC-FIELD-001, VR:FIELD_NAME_TOO_LONG   |
 |TC-F-006|분야 생성 — name 정확히 100자 (경계값)   |P3 |Unit           |Yes  |UC-FIELD-001, VR:FIELD_NAME_TOO_LONG   |
-|TC-F-007|분야 생성 — 동일 계층 name 중복         |P2 |Unit, Component|Yes  |UC-FIELD-001, BR-003                   |
-|TC-F-008|분야 생성 — 다른 계층 동일 name 허용      |P3 |Unit           |Yes  |UC-FIELD-001, BR-003                   |
+|TC-F-007|분야 생성 — name 중복 (전역)            |P2 |Unit, Component|Yes  |UC-FIELD-001, BR-003                   |
+|TC-F-008|분야 생성 — 다른 계층 동일 name 불가      |P3 |Unit           |Yes  |UC-FIELD-001, BR-003                   |
 |TC-F-009|분야 생성 — 존재하지 않는 parentId      |P2 |Unit, Component|Yes  |UC-FIELD-001, BR-002                   |
 |TC-F-010|분야 생성 — INACTIVE 상위 분야 지정     |P2 |Unit, Component|Yes  |UC-FIELD-001, BR-002                   |
 |TC-F-011|분야 생성 — 권한 없는 운영자             |P0 |Unit, Component|Yes  |UC-FIELD-001, BR-001                   |

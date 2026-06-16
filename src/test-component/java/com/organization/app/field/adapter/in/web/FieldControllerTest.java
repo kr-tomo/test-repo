@@ -6,8 +6,8 @@ import com.organization.app.field.domain.model.Field;
 import com.organization.app.field.domain.model.FieldStatus;
 import com.organization.app.field.domain.port.in.CreateFieldUseCase;
 import com.organization.app.field.domain.port.in.DeactivateFieldUseCase;
-import com.organization.app.field.domain.port.in.GetFieldsUseCase;
 import com.organization.app.field.domain.port.in.UpdateFieldUseCase;
+import com.organization.app.field.query.port.in.GetFieldsQuery;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ class FieldControllerTest {
     private DeactivateFieldUseCase deactivateFieldUseCase;
 
     @MockBean
-    private GetFieldsUseCase getFieldsUseCase;
+    private GetFieldsQuery getFieldsQuery;
 
     @Test
     @DisplayName("[TC-F-001] 최상위 분야 생성 성공 — 운영자 권한")

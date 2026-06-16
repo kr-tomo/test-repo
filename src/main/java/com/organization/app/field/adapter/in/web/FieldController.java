@@ -4,8 +4,8 @@ import com.organization.app.field.domain.model.Field;
 import com.organization.app.field.domain.model.FieldStatus;
 import com.organization.app.field.domain.port.in.CreateFieldUseCase;
 import com.organization.app.field.domain.port.in.DeactivateFieldUseCase;
-import com.organization.app.field.domain.port.in.GetFieldsUseCase;
 import com.organization.app.field.domain.port.in.UpdateFieldUseCase;
+import com.organization.app.field.query.port.in.GetFieldsQuery;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -23,7 +23,7 @@ public class FieldController {
     private final CreateFieldUseCase createFieldUseCase;
     private final UpdateFieldUseCase updateFieldUseCase;
     private final DeactivateFieldUseCase deactivateFieldUseCase;
-    private final GetFieldsUseCase getFieldsUseCase;
+    private final GetFieldsQuery getFieldsQuery;
 
     @Operation(summary = "분야 생성", description = "새로운 분야를 생성합니다. 운영자 권한이 필요합니다.")
     @PostMapping
@@ -61,8 +61,8 @@ public class FieldController {
 
     @Operation(summary = "분야 목록 조회", description = "계층 트리 구조로 분야 목록을 조회합니다.")
     @GetMapping
-    public List<GetFieldsUseCase.FieldResponse> getFields() {
-        return getFieldsUseCase.getFields();
+    public List<GetFieldsQuery.FieldResponse> getFields() {
+        return getFieldsQuery.getFields();
     }
 
     public record FieldResponse(

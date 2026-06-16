@@ -342,11 +342,13 @@ CREATE TABLE field (
 
 ### 8.3 트랜잭션 경계
 
-|Use Case         |트랜잭션 범위                     |비고                             |
-|-----------------|----------------------------|-------------------------------|
-|UC-FIELD-001 생성  |FieldService.create() 전체    |Field 단건 저장                    |
-|UC-FIELD-002 수정  |FieldService.update() 전체    |Field 단건 수정                    |
-|UC-FIELD-003 비활성화|FieldService.deactivate() 전체|대상 + 하위 분야 전체 INACTIVE. 단일 트랜잭션|
+|Use Case         |트랜잭션 범위                               |비고                             |
+|-----------------|--------------------------------------|-------------------------------|
+|UC-FIELD-001 생성  |FieldPersistenceAdapter.save()        |단건 저장                        |
+|UC-FIELD-002 수정  |FieldPersistenceAdapter.save()        |단건 수정                        |
+|UC-FIELD-003 비활성화|FieldPersistenceAdapter.saveAll() 등   |대상 + 하위 분야 전체 INACTIVE. 단일 트랜잭션|
+
+> 트랜잭션은 Persistence Adapter (Repository 구현체)에서 관리한다.
 
 -----
 
@@ -354,4 +356,4 @@ CREATE TABLE field (
 
 |OQ-ID |질문                   |선택지                                        |영향                  |
 |------|---------------------|-------------------------------------------|--------------------|
-|OQ-001|상위 분야 비활성화 시 하위 처리 방식|A: 자동 연쇄 INACTIVE (현재 BR-004 가정) / B: 독립 유지|BR-004, UC-FIELD-003|
+|OQ-001|상위 분야 비활성화 시 하위 처리 방식|A: 자동 연쇄 INACTIVE (현재 BR-004 가정) / B: 독립 유지|BR-004, UC-FIELD-003|��화 시 하위 처리 방식|A: 자동 연쇄 INACTIVE (현재 BR-004 가정) / B: 독립 유지|BR-004, UC-FIELD-003|

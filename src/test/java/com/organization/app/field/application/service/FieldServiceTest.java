@@ -32,11 +32,11 @@ class FieldServiceTest {
     private FieldService fieldService;
 
     @Test
-    @DisplayName("[TC-F-007] 분야 생성 — 동일 계층 name 중복")
+    @DisplayName("[TC-F-007] 분야 생성 — name 중복 (전역)")
     void createFieldDuplicateName() {
         // given
         CreateFieldUseCase.Command command = new CreateFieldUseCase.Command("개발", null);
-        given(fieldRepositoryPort.existsByNameAndParentId("개발", null)).willReturn(true);
+        given(fieldRepositoryPort.existsByName("개발")).willReturn(true);
 
         // when & then
         assertThrows(FieldException.class, () -> fieldService.createField(command));

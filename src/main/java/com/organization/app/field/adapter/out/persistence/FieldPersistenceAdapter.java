@@ -8,13 +8,17 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import org.springframework.transaction.annotation.Transactional;
+
 @Component
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class FieldPersistenceAdapter implements FieldRepositoryPort {
 
     private final JpaFieldRepository jpaFieldRepository;
 
     @Override
+    @Transactional
     public Field save(Field field) {
         FieldEntity entity = toEntity(field);
         FieldEntity saved = jpaFieldRepository.save(entity);
@@ -34,8 +38,8 @@ public class FieldPersistenceAdapter implements FieldRepositoryPort {
     }
 
     @Override
-    public boolean existsByNameAndParentId(String name, Long parentId) {
-        return jpaFieldRepository.existsByNameAndParentId(name, parentId);
+    public boolean existsByName(String name) {
+        return jpaFieldRepository.existsByName(name);
     }
 
     @Override
@@ -57,6 +61,7 @@ public class FieldPersistenceAdapter implements FieldRepositoryPort {
     }
 
     @Override
+    @Transactional
     public void saveAll(List<Field> fields) {
         List<FieldEntity> entities = fields.stream()
                 .map(this::toEntity)
