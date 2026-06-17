@@ -20,7 +20,7 @@ KB 참조: [kb/INDEX.md](./kb/INDEX.md) → [domain-model.md](./kb/domain-model.
 **포함**
 
 - 경력(Career) 등록 요청·수정·철회·노출 설정 (멘토)
-- 분야(FieldRegistration) 등록 요청·수정·철회·노출 설정 (멘토)
+- 분야(MentorField) 등록 요청·수정·철회·노출 설정 (멘토)
 - 운영자의 경력·분야 등록 요청 승인/반려
 
 **제외**
@@ -34,7 +34,7 @@ KB 참조: [kb/INDEX.md](./kb/INDEX.md) → [domain-model.md](./kb/domain-model.
 |용어                      |정의                                       |
 |------------------------|-----------------------------------------|
 |경력(Career)              |멘토가 자유 기술로 등록하는 업무·학습 이력                 |
-|분야 등록(FieldRegistration)|멘토가 서비스 분야 중 자신의 전문 분야를 등록 요청하는 레코드      |
+|분야 등록(MentorField)|멘토가 서비스 분야 중 자신의 전문 분야를 등록 요청하는 레코드      |
 |등록 요청 상태                |PENDING / APPROVED / REJECTED / WITHDRAWN|
 |노출 설정(visible)          |APPROVED 상태 항목을 외부에 표시할지 멘토가 제어하는 플래그    |
 
@@ -156,7 +156,7 @@ KB 참조: [kb/INDEX.md](./kb/INDEX.md) → [domain-model.md](./kb/domain-model.
 
 > OQ-005: content 최대 길이 2000자는 임시값. 확정 필요.
 
-### 4.2 분야 등록(FieldRegistration) 요청/수정
+### 4.2 분야 등록(MentorField) 요청/수정
 
 |필드     |규칙                           |오류 메시지                 |오류 코드                         |
 |-------|-----------------------------|-----------------------|------------------------------|
@@ -190,7 +190,7 @@ MentorProfile (Aggregate Root)
 ├── id: Long
 ├── accountId: Long                         # 멘토 Account 참조
 ├── careers: List<CareerEntry>              # Entity
-└── fieldRegistrations: List<FieldRegistration>  # Entity
+└── fieldRegistrations: List<MentorField>  # Entity
 ```
 
 #### MentorProfile
@@ -212,7 +212,7 @@ MentorProfile (Aggregate Root)
 |createdAt      |LocalDateTime     |생성 시각           |Not Null                              |
 |updatedAt      |LocalDateTime     |수정 시각           |Not Null                              |
 
-#### FieldRegistration (Entity)
+#### MentorField (Entity)
 
 |필드             |타입                |설명              |제약                                    |
 |---------------|------------------|----------------|--------------------------------------|
@@ -265,13 +265,13 @@ MentorProfile (Aggregate Root)
 |Inbound Port       |`ModifyCareerUseCase`               |경력 수정/철회/노출 설정         |
 |Inbound Port       |`ReviewCareerUseCase`               |경력 운영자 검토              |
 |Inbound Port       |`RegisterFieldUseCase`              |분야 등록 요청               |
-|Inbound Port       |`ModifyFieldRegistrationUseCase`    |분야 수정/철회/노출 설정         |
-|Inbound Port       |`ReviewFieldRegistrationUseCase`    |분야 운영자 검토              |
+|Inbound Port       |`ModifyMentorFieldUseCase`    |분야 수정/철회/노출 설정         |
+|Inbound Port       |`ReviewMentorFieldUseCase`    |분야 운영자 검토              |
 |Application Service|`MentorCareerService`               |경력 Use Case 구현         |
 |Application Service|`MentorFieldRegistrationService`    |분야 Use Case 구현         |
 |Domain             |`MentorProfile`                     |Aggregate Root         |
 |Domain             |`CareerEntry`                       |Entity                 |
-|Domain             |`FieldRegistration`                 |Entity                 |
+|Domain             |`MentorField`                 |Entity                 |
 |Outbound Port      |`MentorProfileRepositoryPort`       |MentorProfile 영속성 인터페이스|
 |Outbound Adapter   |`MentorProfilePersistenceAdapter`   |JPA 구현                 |
 
@@ -284,7 +284,7 @@ com.<organization>.<app>/
     │   ├── model/
     │   │   ├── MentorProfile.java
     │   │   ├── CareerEntry.java
-    │   │   ├── FieldRegistration.java
+    │   │   ├── MentorField.java
     │   │   └── RegistrationStatus.java
     │   └── port/
     │       ├── in/
@@ -292,8 +292,8 @@ com.<organization>.<app>/
     │       │   ├── ModifyCareerUseCase.java
     │       │   ├── ReviewCareerUseCase.java
     │       │   ├── RegisterFieldUseCase.java
-    │       │   ├── ModifyFieldRegistrationUseCase.java
-    │       │   └── ReviewFieldRegistrationUseCase.java
+    │       │   ├── ModifyMentorFieldUseCase.java
+    │       │   └── ReviewMentorFieldUseCase.java
     │       └── out/
     │           └── MentorProfileRepositoryPort.java
     ├── application/

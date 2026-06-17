@@ -19,7 +19,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class FieldRegistrationEntity {
+public class MentorFieldEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

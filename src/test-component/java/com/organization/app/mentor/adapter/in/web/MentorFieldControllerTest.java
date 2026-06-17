@@ -1,9 +1,9 @@
 package com.organization.app.mentor.adapter.in.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.organization.app.mentor.domain.model.FieldRegistration;
+import com.organization.app.mentor.domain.model.MentorField;
 import com.organization.app.mentor.domain.model.RegistrationStatus;
-import com.organization.app.mentor.domain.port.in.ModifyFieldRegistrationUseCase;
+import com.organization.app.mentor.domain.port.in.ModifyMentorFieldUseCase;
 import com.organization.app.mentor.domain.port.in.RegisterFieldUseCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Tag("component")
 @SpringBootTest
 @AutoConfigureMockMvc
-class MentorFieldRegistrationControllerTest {
+class MentorFieldControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -36,7 +36,7 @@ class MentorFieldRegistrationControllerTest {
     private RegisterFieldUseCase registerFieldUseCase;
 
     @MockBean
-    private ModifyFieldRegistrationUseCase modifyFieldRegistrationUseCase;
+    private ModifyMentorFieldUseCase modifyFieldRegistrationUseCase;
 
     @Test
     @DisplayName("[TC-MP-023] 분야 등록 요청 성공 → PENDING 생성")
@@ -44,7 +44,7 @@ class MentorFieldRegistrationControllerTest {
     void registerFieldSuccess() throws Exception {
         // given
         RegisterFieldRequest request = new RegisterFieldRequest(10L);
-        FieldRegistration registration = FieldRegistration.builder()
+        MentorField registration = MentorField.builder()
                 .id(1L)
                 .fieldId(10L)
                 .status(RegistrationStatus.PENDING)

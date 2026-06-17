@@ -1,16 +1,16 @@
 package com.organization.app.mentor.adapter.in.web;
 
-import com.organization.app.mentor.domain.model.FieldRegistration;
+import com.organization.app.mentor.domain.model.MentorField;
 import com.organization.app.mentor.domain.model.RegistrationStatus;
 
-public record FieldRegistrationResponse(
+public record MentorFieldResponse(
         Long id,
         Long fieldId,
         RegistrationStatus status,
         Boolean visible
 ) {
-    public static FieldRegistrationResponse from(FieldRegistration registration) {
-        return new FieldRegistrationResponse(
+    public static MentorFieldResponse from(MentorField registration) {
+        return new MentorFieldResponse(
                 registration.getId(),
                 registration.getFieldId(),
                 registration.getStatus(),

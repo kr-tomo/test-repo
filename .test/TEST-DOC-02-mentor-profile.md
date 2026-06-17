@@ -544,7 +544,7 @@
 
 - HTTP 201 Created
 - 응답: `{ "id": any, "fieldId": 10, "fieldName": "백엔드", "status": "PENDING", "visible": null }`
-- 부수 효과: FieldRegistration 저장, status=PENDING
+- 부수 효과: MentorField 저장, status=PENDING
 
 -----
 
@@ -624,7 +624,7 @@
 
 #### 조건
 
-- 동일 멘토에 fieldId=10, status=PENDING인 FieldRegistration 이미 존재
+- 동일 멘토에 fieldId=10, status=PENDING인 MentorField 이미 존재
 
 #### 입력
 
@@ -636,7 +636,7 @@
 
 - HTTP 409 Conflict
 - `{ "code": "FIELD_REGISTRATION_DUPLICATE", "status": 409 }`
-- 부수 효과: FieldRegistration 신규 저장 없음
+- 부수 효과: MentorField 신규 저장 없음
 
 -----
 
@@ -649,7 +649,7 @@
 
 #### 조건
 
-- 동일 멘토에 fieldId=10, status=APPROVED인 FieldRegistration 이미 존재
+- 동일 멘토에 fieldId=10, status=APPROVED인 MentorField 이미 존재
 
 #### 기대 결과
 
@@ -669,7 +669,7 @@
 
 #### 조건
 
-- 동일 멘토에 fieldId=10, status=REJECTED인 FieldRegistration 존재
+- 동일 멘토에 fieldId=10, status=REJECTED인 MentorField 존재
 
 #### 입력
 
@@ -691,14 +691,14 @@
 
 - **중요도**: P1
 - **계층**: Unit, Component
-  - Unit — `FieldRegistration.updateField()` 상태 조건 + 필드 변경
+  - Unit — `MentorField.updateField()` 상태 조건 + 필드 변경
   - Component — `PATCH /mentor-profiles/me/field-registrations/{registrationId}`
 - **루프 포함**: Yes
 - **대상**: `MentorFieldRegistrationService.modify()`, BR-008
 
 #### 조건
 
-- FieldRegistration id=5, status=PENDING, fieldId=10
+- MentorField id=5, status=PENDING, fieldId=10
 - 변경할 fieldId=11 ACTIVE 존재
 - 멘토에게 fieldId=11 PENDING/APPROVED 항목 없음
 
@@ -724,7 +724,7 @@
 
 #### 조건
 
-- FieldRegistration status=APPROVED
+- MentorField status=APPROVED
 
 #### 기대 결과
 
@@ -750,14 +750,14 @@
 
 - **중요도**: P1
 - **계층**: Unit, Component
-  - Unit — `FieldRegistration.withdraw()` 상태 전이
+  - Unit — `MentorField.withdraw()` 상태 전이
   - Component — `DELETE /mentor-profiles/me/field-registrations/{registrationId}`
 - **루프 포함**: Yes
 - **대상**: BR-009
 
 #### 조건
 
-- FieldRegistration id=5, status=PENDING
+- MentorField id=5, status=PENDING
 
 #### 기대 결과
 
@@ -783,14 +783,14 @@
 
 - **중요도**: P1
 - **계층**: Unit, Component
-  - Unit — `FieldRegistration.updateVisibility()` 상태 조건 검증
+  - Unit — `MentorField.updateVisibility()` 상태 조건 검증
   - Component — `PATCH /mentor-profiles/me/field-registrations/{registrationId}/visibility`
 - **루프 포함**: Yes
 - **대상**: BR-010
 
 #### 조건
 
-- FieldRegistration status=APPROVED, visible=true
+- MentorField status=APPROVED, visible=true
 
 #### 입력
 
@@ -814,7 +814,7 @@
 
 #### 조건
 
-- FieldRegistration status=PENDING
+- MentorField status=PENDING
 
 #### 기대 결과
 
@@ -827,7 +827,7 @@
 
 - **중요도**: P0
 - **계층**: Unit, Component
-  - Unit — `FieldRegistration.approve()` 상태 전이 + visible 기본값
+  - Unit — `MentorField.approve()` 상태 전이 + visible 기본값
   - Component — `POST /admin/field-registrations/{registrationId}/review`
 - **루프 포함**: Yes
 - **대상**: BR-011
@@ -836,7 +836,7 @@
 #### 조건
 
 - ACCOUNT_MANAGEMENT 권한 운영자
-- FieldRegistration id=5, status=PENDING
+- MentorField id=5, status=PENDING
 
 #### 입력
 
@@ -862,7 +862,7 @@
 #### 조건
 
 - ACCOUNT_MANAGEMENT 권한 운영자
-- FieldRegistration id=5, status=PENDING
+- MentorField id=5, status=PENDING
 
 #### 입력
 
@@ -887,7 +887,7 @@
 #### 기대 결과
 
 - HTTP 403 Forbidden
-- 부수 효과: FieldRegistration 상태 변경 없음
+- 부수 효과: MentorField 상태 변경 없음
 
 -----
 
@@ -900,7 +900,7 @@
 
 #### 조건
 
-- FieldRegistration status=APPROVED
+- MentorField status=APPROVED
 
 #### 기대 결과
 
@@ -919,7 +919,7 @@
 
 #### 조건
 
-- CareerEntry 또는 FieldRegistration PENDING 상태에서 APPROVE 전이
+- CareerEntry 또는 MentorField PENDING 상태에서 APPROVE 전이
 
 #### 기대 결과
 

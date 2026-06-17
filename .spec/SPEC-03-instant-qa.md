@@ -71,7 +71,7 @@ KB 참조: [kb/INDEX.md](./kb/INDEX.md) → [domain-model.md](./kb/domain-model.
 ### BR-002: 멘토의 Q&A 조회 범위 — 자신의 승인 분야로 한정
 
 - **조건**: 멘토가 인스턴스 Q&A 목록을 조회하는 경우
-- **결과**: 멘토의 FieldRegistration 중 status=APPROVED이고 visible=true인 분야와 일치하는 Q&A만 조회 가능하다.
+- **결과**: 멘토의 MentorField 중 status=APPROVED이고 visible=true인 분야와 일치하는 Q&A만 조회 가능하다.
 - **정렬**: postedAt 내림차순 (최신 게재 순).
 - **예시**: 멘토가 “백엔드(id=10)”, “Java(id=11)” 분야를 승인·노출 상태로 보유 중이면, fieldId가 10 또는 11인 Q&A만 조회된다.
 - **연관 UC**: UC-QA-002

@@ -75,7 +75,7 @@ MentorProfile (Aggregate Root)
 ├── id: MentorProfileId
 ├── accountId: AccountId          # 멘토 계정 참조
 ├── careers: List<CareerEntry>    # Entity
-└── fieldRegistrations: List<FieldRegistration>  # Entity
+└── fieldRegistrations: List<MentorField>  # Entity
 ```
 
 ### CareerEntry (Entity) {#career}
@@ -116,10 +116,10 @@ CareerEntry
 
 -----
 
-### FieldRegistration (Entity) {#mentor-field}
+### MentorField (Entity) {#mentor-field}
 
 ```
-FieldRegistration
+MentorField
 ├── id: FieldRegistrationId
 ├── fieldId: FieldId              # 서비스 Field 참조
 ├── status: RegistrationStatus    # PENDING / APPROVED / REJECTED / WITHDRAWN
@@ -133,7 +133,7 @@ FieldRegistration
 |status |Enum   |Not Null, 기본값: PENDING             |
 |visible|Boolean|Not Null, 기본값: true (APPROVED 전환 시)|
 
-#### FieldRegistration 상태 전이
+#### MentorField 상태 전이
 
 CareerEntry와 동일한 패턴을 따른다.
 

@@ -25,12 +25,12 @@ public class MentorProfileException extends RuntimeException {
         return new MentorProfileException("FORBIDDEN", "본인 항목 아님 또는 권한 없음", 403);
     }
 
-    public static MentorProfileException fieldRegistrationNotFound() {
-        return new MentorProfileException("FIELD_REGISTRATION_NOT_FOUND", "존재하지 않는 분야 등록 항목입니다.", 404);
+    public static MentorProfileException mentorFieldNotFound() {
+        return new MentorProfileException("MENTOR_FIELD_NOT_FOUND", "존재하지 않는 분야 등록 항목입니다.", 404);
     }
 
-    public static MentorProfileException fieldRegistrationDuplicate() {
-        return new MentorProfileException("FIELD_REGISTRATION_DUPLICATE", "이미 등록 중이거나 승인된 분야입니다.", 409);
+    public static MentorProfileException mentorFieldDuplicate() {
+        return new MentorProfileException("MENTOR_FIELD_DUPLICATE", "이미 등록 중이거나 승인된 분야입니다.", 409);
     }
 
     public static MentorProfileException modificationNotAllowed() {

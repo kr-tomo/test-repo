@@ -1,7 +1,7 @@
 package com.organization.app.mentor.adapter.out.persistence;
 
 import com.organization.app.mentor.domain.model.CareerEntry;
-import com.organization.app.mentor.domain.model.FieldRegistration;
+import com.organization.app.mentor.domain.model.MentorField;
 import com.organization.app.mentor.domain.model.MentorProfile;
 import com.organization.app.mentor.domain.model.RegistrationStatus;
 import com.organization.app.mentor.domain.port.out.MentorProfileRepositoryPort;
@@ -19,7 +19,8 @@ public class MentorProfilePersistenceAdapter implements MentorProfileRepositoryP
 
     private final JpaMentorProfileRepository mentorProfileRepository;
     private final JpaCareerEntryRepository careerEntryRepository;
-    private final JpaFieldRegistrationRepository fieldRegistrationRepository;
+    private final JpaMentorFieldRepository fieldRegistrationRepository;
+    private final MentorFieldMapper fieldRegistrationMapper;
 
     @Override
     public Optional<MentorProfile> findByAccountId(Long accountId) {
@@ -50,17 +51,17 @@ public class MentorProfilePersistenceAdapter implements MentorProfileRepositoryP
     }
 
     @Override
-    public Optional<FieldRegistration> findFieldRegistrationById(Long registrationId) {
+    public Optional<MentorField> findFieldRegistrationById(Long registrationId) {
         return fieldRegistrationRepository.findById(registrationId)
-                .map(this::toFieldRegistrationDomain);
+                .map(fieldRegistrationMapper::toDomain);
     }
 
     @Override
     @Transactional
-    public FieldRegistration saveFieldRegistration(FieldRegistration fieldRegistration) {
-        FieldRegistrationEntity entity = toFieldRegistrationEntity(fieldRegistration);
-        FieldRegistrationEntity saved = fieldRegistrationRepository.save(entity);
-        return toFieldRegistrationDomain(saved);
+    public MentorField saveFieldRegistration(MentorField fieldRegistration) {
+        MentorFieldEntity entity = fieldRegistrationMapper.toEntity(fieldRegistration);
+        MentorFieldEntity saved = fieldRegistrationRepository.save(entity);
+        return fieldRegistrationMapper.toDomain(saved);
     }
 
     @Override
@@ -100,28 +101,6 @@ public class MentorProfilePersistenceAdapter implements MentorProfileRepositoryP
                 .id(domain.getId())
                 .mentorProfileId(domain.getMentorProfileId())
                 .content(domain.getContent())
-                .status(domain.getStatus())
-                .visible(domain.getVisible())
-                .build();
-    }
-
-    private FieldRegistration toFieldRegistrationDomain(FieldRegistrationEntity entity) {
-        return FieldRegistration.builder()
-                .id(entity.getId())
-                .mentorProfileId(entity.getMentorProfileId())
-                .fieldId(entity.getFieldId())
-                .status(entity.getStatus())
-                .visible(entity.getVisible())
-                .createdAt(entity.getCreatedAt())
-                .updatedAt(entity.getUpdatedAt())
-                .build();
-    }
-
-    private FieldRegistrationEntity toFieldRegistrationEntity(FieldRegistration domain) {
-        return FieldRegistrationEntity.builder()
-                .id(domain.getId())
-                .mentorProfileId(domain.getMentorProfileId())
-                .fieldId(domain.getFieldId())
                 .status(domain.getStatus())
                 .visible(domain.getVisible())
                 .build();

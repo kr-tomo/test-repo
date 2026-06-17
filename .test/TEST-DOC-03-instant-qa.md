@@ -246,7 +246,7 @@
 
 #### 조건
 
-- 멘토의 FieldRegistration: fieldId=10 (APPROVED, visible=true), fieldId=11 (APPROVED, visible=true)
+- 멘토의 MentorField: fieldId=10 (APPROVED, visible=true), fieldId=11 (APPROVED, visible=true)
 - InstantQA: id=100 (fieldId=10), id=101 (fieldId=11), id=102 (fieldId=20, 다른 분야)
 
 #### 기대 결과
@@ -265,7 +265,7 @@
 
 #### 조건
 
-- 멘토의 FieldRegistration: fieldId=10 (PENDING)
+- 멘토의 MentorField: fieldId=10 (PENDING)
 - InstantQA: id=100 (fieldId=10)
 
 #### 기대 결과
@@ -283,7 +283,7 @@
 
 #### 조건
 
-- 멘토의 FieldRegistration: fieldId=10 (APPROVED, visible=false)
+- 멘토의 MentorField: fieldId=10 (APPROVED, visible=false)
 - InstantQA: id=100 (fieldId=10)
 
 #### 기대 결과
@@ -319,7 +319,7 @@
 
 #### 조건
 
-- 멘토에 APPROVED·visible=true FieldRegistration 없음
+- 멘토에 APPROVED·visible=true MentorField 없음
 
 #### 기대 결과
 

@@ -1,10 +1,10 @@
 package com.organization.app.mentor.domain.port.in;
 
-import com.organization.app.mentor.domain.model.FieldRegistration;
+import com.organization.app.mentor.domain.model.MentorField;
 import lombok.Builder;
 
-public interface ReviewFieldRegistrationUseCase {
-    FieldRegistration reviewFieldRegistration(Command command);
+public interface ReviewMentorFieldUseCase {
+    MentorField reviewFieldRegistration(Command command);
 
     @Builder
     record Command(

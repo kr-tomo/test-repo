@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 @AllArgsConstructor
-public class FieldRegistration {
+public class MentorField {
     private Long id;
     private Long mentorProfileId;
     private Long fieldId;
@@ -17,8 +17,8 @@ public class FieldRegistration {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public static FieldRegistration create(Long mentorProfileId, Long fieldId) {
-        return FieldRegistration.builder()
+    public static MentorField create(Long mentorProfileId, Long fieldId) {
+        return MentorField.builder()
                 .mentorProfileId(mentorProfileId)
                 .fieldId(fieldId)
                 .status(RegistrationStatus.PENDING)

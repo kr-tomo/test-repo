@@ -1,9 +1,9 @@
 package com.organization.app.mentor.adapter.in.web;
 
 import com.organization.app.mentor.domain.model.CareerEntry;
-import com.organization.app.mentor.domain.model.FieldRegistration;
+import com.organization.app.mentor.domain.model.MentorField;
 import com.organization.app.mentor.domain.port.in.ReviewCareerUseCase;
-import com.organization.app.mentor.domain.port.in.ReviewFieldRegistrationUseCase;
+import com.organization.app.mentor.domain.port.in.ReviewMentorFieldUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class AdminMentorProfileReviewController {
 
     private final ReviewCareerUseCase reviewCareerUseCase;
-    private final ReviewFieldRegistrationUseCase reviewFieldRegistrationUseCase;
+    private final ReviewMentorFieldUseCase reviewFieldRegistrationUseCase;
 
     @Operation(summary = "경력 등록 요청 검토", description = "경력 등록 요청을 승인 또는 반려합니다.")
     @PostMapping("/careers/{careerId}/review")
@@ -35,15 +35,15 @@ public class AdminMentorProfileReviewController {
 
     @Operation(summary = "분야 등록 요청 검토", description = "분야 등록 요청을 승인 또는 반려합니다.")
     @PostMapping("/field-registrations/{registrationId}/review")
-    public FieldRegistrationResponse reviewFieldRegistration(
+    public MentorFieldResponse reviewFieldRegistration(
             @PathVariable Long registrationId,
             @RequestBody @Valid ReviewRequest request) {
-        FieldRegistration registration = reviewFieldRegistrationUseCase.reviewFieldRegistration(
-                ReviewFieldRegistrationUseCase.Command.builder()
+        MentorField registration = reviewFieldRegistrationUseCase.reviewFieldRegistration(
+                ReviewMentorFieldUseCase.Command.builder()
                         .registrationId(registrationId)
-                        .action(ReviewFieldRegistrationUseCase.Action.valueOf(request.action().name()))
+                        .action(ReviewMentorFieldUseCase.Action.valueOf(request.action().name()))
                         .build()
         );
-        return FieldRegistrationResponse.from(registration);
+        return MentorFieldResponse.from(registration);
     }
 }
