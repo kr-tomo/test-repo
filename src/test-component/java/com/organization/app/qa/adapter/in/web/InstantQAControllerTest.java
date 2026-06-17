@@ -2,9 +2,7 @@ package com.organization.app.qa.adapter.in.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.organization.app.qa.domain.model.InstantQA;
-import com.organization.app.qa.domain.port.in.GetInstantQAsUseCase;
-import com.organization.app.qa.domain.port.in.GetMyInstantQAsUseCase;
-import com.organization.app.qa.domain.port.in.PostInstantQAUseCase;
+import com.organization.app.qa.domain.port.in.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -45,6 +43,12 @@ class InstantQAControllerTest {
 
     @MockBean
     private GetMyInstantQAsUseCase getMyInstantQAsUseCase;
+
+    @MockBean
+    private AnswerInstantQAUseCase answerInstantQAUseCase;
+
+    @MockBean
+    private UpdateQAAnswerUseCase updateQAAnswerUseCase;
 
     @Test
     @DisplayName("[TC-QA-001] Q&A 등록 성공")

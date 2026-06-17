@@ -3,8 +3,7 @@ package com.organization.app.matching.adapter.in.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.organization.app.matching.domain.model.MatchRequest;
 import com.organization.app.matching.domain.model.MatchRequestStatus;
-import com.organization.app.matching.domain.port.in.CreateMatchRequestUseCase;
-import com.organization.app.matching.domain.port.in.GetMyMatchRequestsQuery;
+import com.organization.app.matching.domain.port.in.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -42,6 +41,12 @@ class MatchRequestControllerTest {
 
     @MockBean
     private GetMyMatchRequestsQuery getMyMatchRequestsQuery;
+
+    @MockBean
+    private AssignMentorUseCase assignMentorUseCase;
+
+    @MockBean
+    private ApproveMatchRequestUseCase approveMatchRequestUseCase;
 
     @Test
     @DisplayName("[TC-MR-001] 매칭 요청 생성 성공")

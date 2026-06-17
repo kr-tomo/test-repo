@@ -3,8 +3,7 @@ package com.organization.app.mentor.adapter.in.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.organization.app.mentor.domain.model.CareerEntry;
 import com.organization.app.mentor.domain.model.RegistrationStatus;
-import com.organization.app.mentor.domain.port.in.ModifyCareerUseCase;
-import com.organization.app.mentor.domain.port.in.RegisterCareerUseCase;
+import com.organization.app.mentor.domain.port.in.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -37,6 +36,18 @@ class MentorCareerControllerTest {
 
     @MockBean
     private ModifyCareerUseCase modifyCareerUseCase;
+
+    @MockBean
+    private ReviewCareerUseCase reviewCareerUseCase;
+
+    @MockBean
+    private ReviewMentorFieldUseCase reviewMentorFieldUseCase;
+
+    @MockBean
+    private RegisterFieldUseCase registerFieldUseCase;
+
+    @MockBean
+    private ModifyMentorFieldUseCase modifyMentorFieldUseCase;
 
     @Test
     @DisplayName("[TC-MP-001] 경력 등록 요청 성공 → PENDING 생성")
