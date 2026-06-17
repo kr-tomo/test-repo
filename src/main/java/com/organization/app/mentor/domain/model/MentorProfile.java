@@ -15,15 +15,15 @@ public class MentorProfile {
     @Builder.Default
     private List<CareerEntry> careers = new ArrayList<>();
     @Builder.Default
-    private List<MentorField> fieldRegistrations = new ArrayList<>();
+    private List<MentorField> mentorFields = new ArrayList<>();
 
     public void addCareer(String content) {
         CareerEntry entry = CareerEntry.create(this.id, content);
         this.careers.add(entry);
     }
 
-    public void addFieldRegistration(Long fieldId) {
+    public void addMentorField(Long fieldId) {
         MentorField registration = MentorField.create(this.id, fieldId);
-        this.fieldRegistrations.add(registration);
+        this.mentorFields.add(registration);
     }
 }

@@ -1,7 +1,9 @@
 package com.organization.app.config;
 
 import com.organization.app.field.domain.exception.FieldException;
+import com.organization.app.matching.domain.exception.MatchRequestException;
 import com.organization.app.mentor.domain.exception.MentorProfileException;
+import com.organization.app.qa.domain.exception.InstantQAException;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,26 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MentorProfileException.class)
     public ResponseEntity<Map<String, Object>> handleMentorProfileException(MentorProfileException e) {
+        return ResponseEntity.status(e.getStatus())
+                .body(Map.of(
+                        "code", e.getCode(),
+                        "message", e.getMessage(),
+                        "status", e.getStatus()
+                ));
+    }
+
+    @ExceptionHandler(InstantQAException.class)
+    public ResponseEntity<Map<String, Object>> handleInstantQAException(InstantQAException e) {
+        return ResponseEntity.status(e.getStatus())
+                .body(Map.of(
+                        "code", e.getCode(),
+                        "message", e.getMessage(),
+                        "status", e.getStatus()
+                ));
+    }
+
+    @ExceptionHandler(MatchRequestException.class)
+    public ResponseEntity<Map<String, Object>> handleMatchRequestException(MatchRequestException e) {
         return ResponseEntity.status(e.getStatus())
                 .body(Map.of(
                         "code", e.getCode(),

@@ -190,7 +190,7 @@ MentorProfile (Aggregate Root)
 ├── id: Long
 ├── accountId: Long                         # 멘토 Account 참조
 ├── careers: List<CareerEntry>              # Entity
-└── fieldRegistrations: List<MentorField>  # Entity
+└── mentorFields: List<MentorField>  # Entity
 ```
 
 #### MentorProfile

@@ -522,7 +522,7 @@
 
 - **중요도**: P0
 - **계층**: Unit, Component
-  - Unit — `MentorProfile.addFieldRegistration()` 도메인 검증 및 PENDING 상태 초기화
+  - Unit — `MentorProfile.addMentorField()` 도메인 검증 및 PENDING 상태 초기화
   - Component — `POST /mentor-profiles/me/field-registrations` (`@WebMvcTest`)
 - **루프 포함**: Yes
 - **대상**: `MentorFieldRegistrationService.register()`, BR-006, BR-007

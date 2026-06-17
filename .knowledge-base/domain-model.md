@@ -75,7 +75,7 @@ MentorProfile (Aggregate Root)
 ├── id: MentorProfileId
 ├── accountId: AccountId          # 멘토 계정 참조
 ├── careers: List<CareerEntry>    # Entity
-└── fieldRegistrations: List<MentorField>  # Entity
+└── mentorFields: List<MentorField>  # Entity
 ```
 
 ### CareerEntry (Entity) {#career}
